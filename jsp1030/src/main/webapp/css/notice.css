@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/* 주석 : content영역 - notice */
+#sect{height:100%; }
+#tit{text-align: left; border-bottom:4px solid #202020; padding-bottom:36px; }
+.f_search{margin-top:56px; width:1180px;  height:180px;  }
+.f_search h2{font-size: 22px; font-weight: 700; color:#101010; }
+.box_search{ box-sizing: border-box; margin-top:16px; height:132px;  background: #f7f7f7; padding:32px; 
+}	
+.sch_wrap{width:644px; margin:0 auto; }
+.sch_wrap form{position: relative; width:644px; height:68px; }
+.txt{ box-sizing: border-box; width:644px; height:68px; border:2px solid #202020;
+padding: 0 106px 0 20px; font-size: 20px; font-weight: 700;
+ }	
+ 
+.btn_srch{ display: inline-block; width:32px; height:32px; 
+background:url('../images/ico_set2.png') -600px -150px no-repeat;
+background-size: 800px 800px; 
+border:0; position:absolute; right:18px; top:30%; cursor: pointer; }
+
+.notice_conts { width:1180px;  margin:62px 0 30px;  }
+.tb_row{width:1180px;  box-sizing: border-box;
+border-top:2px solid #202020; border-bottom:2px solid #202020; }
+.tb_row table { width:1180px; border-collapse: collapse; font-size:15px; font-weight: 400;
+color:#606060; letter-spacing: -0.5px;}
+.tb_row th,td{border-bottom:1px solid #e0e0e0; text-align: center;
+height:63px; box-sizing: border-box; padding:20px 24px; } 
+.tb_row th{background: #f2f2f2; border-bottom:2px solid #e0e0e0; }
+
+/* 글쓰기 버튼 */
+.write_btn{ border:1px solid black; width:130px; height:40px;
+background:#606060; color:white; text-align: center;
+line-height: 38px; float:right; cursor: pointer;}
+
+
+/* 하단넘버링 */
+.pagination{ margin-top:80px; clear: both; width:1180px; height:40px; text-align: center; }
+.pagination a{ display: inline-block; width:40px; height:40px;  
+box-sizing: border-box; line-height: 40px; 
+ font-size:14px; font-weight: 700; text-align: center;}
+.pagination a>span{ display: inline-block; width:40px; height:40px; } 
+.pagination>a:nth-of-type(1){background: url('../images/ico_set.png') -3px -301px no-repeat;
+background-size: 800px 800px;}
+.pagination>a:nth-of-type(2){background: url('../images/ico_set.png') -43px -301px no-repeat;
+background-size: 800px 800px;}
+.pagination>a:nth-of-type(3){background: url('../images/ico_set.png') -83px -301px no-repeat;
+background-size: 800px 800px;}
+.pagination>a:nth-of-type(4){background: url('../images/ico_set.png') -123px -301px no-repeat;
+background-size: 800px 800px;}
+.page_num{display: inline-block; padding:0 20px; }
+.page_num span:hover {background:#101010; color:white; font-weight: 700;}
+
+
+

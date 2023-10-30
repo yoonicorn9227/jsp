@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form파일</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+			//확인 버튼 클릭시 input의 text가 없으면 이름을 입력하셔야 이동이 가능합니다.
+			//다시 inputbox focus 되도록 하시오.
+			$(function(){
+				$("#btn").click(function(){
+					if($("#name").val()==""){
+						alert("이름을 입력하셔야 이동이 가능합니다.");
+						$("#name").focus();
+						return false;
+					}//if
+					frm.submit();
+				});//btn
+			});//제이쿼리 구문선언
+			
+			//자바스크립트
+			//function checkBtn(){
+				//document.querySelector("#name").value;
+					//if(document.querySelector("#name").value==""){
+						//alert("이름을 입력하셔야 이동이 가능합니다.");
+						//document.querySelector("#name").focus();
+						//return false;
+					//}//if
+					//frm.submit();
+			//}//CheckBtn()
+		</script>
+	</head>
+	<body>
+		<form name="frm" method="post" action="http://localhost:8181/jsp1030/Ser06">
+			<label>이름</label>
+			<input type="text" name="name" id="name">
+			<input type="button" onclick="CheckBtn" id="btn" value="확인">
+		</form>
+		
+	</body>
+</html>
