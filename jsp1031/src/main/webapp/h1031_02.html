@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>성적입력</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+			$(function(){
+				$("#fbtn").click(function(){
+					if($("#no").val()==""){
+						alert("학번을 입력하셔야 합니다.")
+						$("#no").focus();
+						return false;
+						}
+					 if($("#name").val()==""){
+						alert("이름을 입력하셔야 합니다.")
+						$("#name").focus()
+						return false;
+						}
+					if(Number($("#kor").val())>100||Number($("#eng").val())>100||Number($("#math").val())>100){
+						alert("과목 점수 100점 초과는 입력이 불가능 합니다.")
+						$("#kor").focus();
+						return false;
+					}//if
+					
+					
+					
+					frm.submit();
+				});//#fbtn
+				
+			});//제이쿼리 구문
+		</script>
+	</head>
+	<body>
+		<h1>학생성적입력</h1>
+		<form name="frm" method="get" action="S02">
+			<label>학생학번</label>
+			<input type="text" name="no" id="no"> 
+			<br>
+			<label>학생이름</label>
+			<input type="text" name="name" id="name"> 
+			<br>
+			<label>국어점수</label>
+			<input type="text" name="kor" id="kor"> 
+			<br>
+			<label>수학점수</label>
+			<input type="text" name="math" id="math"> 
+			<br>
+			<label>영어점수</label>
+			<input type="text" name="eng" id="eng"> 
+			<br>
+			<label>계열선택</label>
+			<input type="radio" name="major" id="Arts" value="Arts">
+			<label for="Arts">문과</label>
+			<input type="radio" name="major" id="Sciences" value="Sciences">
+			<label for="Sciences">이과</label>
+			<br>
+			<label>좋아하는 과목</label><br>
+			<input type="checkbox" name="subject" id="kor1" value="kor1">
+			<label for="kor1">국어</label>
+			<input type="checkbox" name="subject" id="eng1" value="eng1">
+			<label for="eng1">영어</label>
+			<input type="checkbox" name="subject" id="math1" value="math1">
+			<label for="math1">수학</label>
+			<input type="checkbox" name="subject" id="sci1" value="sci1">
+			<label for="sci1">과학</label>
+			<input type="checkbox" name="subject" id="hsty1" value="hsty1">
+			<label for="hsty1">역사</label>
+			<br>
+			<label>주소</label>
+			<select name="address" id="address">
+				<option value="seoul">서울</option>
+				<option value="incheon">인천</option>
+				<option value="deajeon">대전</option>
+				<option value="deagu">대구</option>
+				<option value="busan">부산</option>
+			</select>
+			<br>
+			<input type="button" id="fbtn" value="확인">
+			<input type="reset"  value="취소">
+			<br>
+		</form>
+	
+	</body>
+</html>
