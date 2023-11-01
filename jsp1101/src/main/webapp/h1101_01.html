@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>form데이터</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		$(function(){
+			$("#fbtn").click(function(){
+					if($("#iid").val().length<3){
+						alert("아이디는 3자리 이상 입력해야합니다.")
+						$("#iid").focus();
+						return false;
+					}//if-아이디
+					
+					if($("#ipw").val().length<0){
+						alert("비밀번호를 입력해야합니다.")
+						$("#ipw").focus();
+						return false;
+					}//if-비밀번호
+				
+					if($("input:radio[name=gender]:checked").length<1){
+						alert("성별을 선택하셔야 합니다.")
+						return false;
+					}//if-라디오(성별)
+					
+					if($("input:checkbox[name=hobby]:checked").length<1){
+						//$("input:checkbox[name=hobby].length : checkbox 전체개수
+						//$("input:checkbox[name=hobby]:checked.length" : checkbox 체크된(checked) 갯수
+						alert("취미를 1개이상 선택하셔야합니다.")
+						$("#game").prop("checked",true);
+						return false;
+					}//if-체크박스
+				
+				
+				
+				
+				frm.submit(); //액션으로 주소를 이동해줘라
+			
+			});//#fbtn
+			
+			
+		});//제이쿼리 구문 최신
+
+		function fbtn () {
+			
+			}//제이쿼리 구문 일반 (onclick 사용시)
+	</script>
+	</head>
+	<body>
+		<h1>회원가입</h1>
+		<form name="frm" method="get" action="S01">
+			<label>아이디</label>
+			<input type="text" name="id" id="iid"><br>
+			<label>패스워드</label>
+			<input type="password" name="pw" id="ipw"><br>
+			<label>이름</label>
+			<input type="text" name="name" id="iname">
+			<br>
+			<label>성별</label><br>
+			<input type="radio" name="gender" id="male" value="남자">
+			<label for="male">남자</label>
+			<input type="radio" name="gender" id="female" value="여자">
+			<label for="female">여자</label>
+			<br>
+			<label>취미</label><br>
+			<input type="checkbox" name="hobby" id="game" value="게임">
+			<label for="game">게임</label>
+			<input type="checkbox" name="hobby" id="golf" value="골프">
+			<label for="golf">골프</label>
+			<input type="checkbox" name="hobby" id="cook" value="요리">
+			<label for="cook">요리</label>
+			<input type="checkbox" name="hobby" id="run" value="조깅">
+			<label for="run">조깅</label>
+			<input type="checkbox" name="hobby" id="book" value="독서">
+			<label for="book">독서</label>
+			<br>
+			<label>주소</label>
+			<select name="address">
+				<option value="서울">서울</option>
+				<option value="인천">인천</option>
+				<option value="대전">대전</option>
+				<option value="대구">대구</option>
+				<option value="부산">부산</option>
+				<option value="광주">광주</option>
+			</select>
+			
+			
+			<br>
+			<input type="button" id="fbtn" value="확인">
+			<input type="reset" value="취소">
+			
+		</form>
+	
+	</body>
+</html>
