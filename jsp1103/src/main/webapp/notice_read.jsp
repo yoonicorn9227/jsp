@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/read.css">
-  <style>a{ text-decoration: none;}</style>
+  <style>
+  	a{ text-decoration: none;}
+  	#wrap a{color:white; font-size: 13px}
+  </style>
   <script>
   	$(function(){
   		$("#modifyBtn").click(function(){
@@ -36,7 +39,7 @@
     <ul>
       <li>회원가입</li> <span>|</span>
       <li>로그인</li> <span>|</span>
-      <li>고객행복센터</li> <span>|</span>
+      <li><a href="notice_list.jsp">고객행복센터</a></li> <span>|</span>
       <li>배송지역검색</li> <span>|</span>
       <li>기프트카드 등록</li>
     </ul>

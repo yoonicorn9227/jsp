@@ -14,14 +14,15 @@
   <link rel="stylesheet" href="css/notice_list.css">
   <style>
   	a{text-decoration: none; color:black;}
+  	#wrap a{color:white; font-size: 13px}
   </style>
 </head>
 <body>
-  <header>
+  <header id="wrap">
     <ul>
       <li>회원가입</li> <span>|</span>
       <li>로그인</li> <span>|</span>
-      <li>고객행복센터</li> <span>|</span>
+      <li><a href="notice_list.jsp">고객행복센터</a></li> <span>|</span>
       <li>배송지역검색</li> <span>|</span>
       <li>기프트카드 등록</li>
     </ul>
