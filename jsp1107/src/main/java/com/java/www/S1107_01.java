@@ -18,7 +18,7 @@ public class S1107_01 extends HttpServlet {
 		System.out.println("doAction");
 		
 		request.setCharacterEncoding("UTF-8");
-		//Servler에서 html 오픈할때
+		//Servlet에서 html 오픈할때
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
 		String id = request.getParameter("id");
