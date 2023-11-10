@@ -27,8 +27,6 @@
 						return false;
 					}//if
 					
-					
-					
 					alert("회원가입이 되었습니다.")
 					m_frm.submit();
 				});//#fbtn.click
@@ -39,14 +37,13 @@
 	<body>
 		<%
 			String id = request.getParameter("id");
-			
-		
+					
 			//1.객체선언 //2.참조변수명.메소드명
 			MemberDao mdao = new MemberDao();
 			MemberDto mdto = mdao.memberOne(id);
 		%>
 		<div>
-			<h1>회원정보 보기</h1>
+			<h1>[<%=mdto.getName() %>] 회원님 정보보기</h1>
 				<table>
 					<tr>
 						<th>아 이 디</th>
@@ -69,13 +66,11 @@
 						<td><%=mdto.getGender() %></td>
 					</tr>
 					<tr>
-						<tr>
 						<th>취　　미</th>
 						<td><%=mdto.getHobby() %></td>
 					</tr>
-					</tr>
 				</table>
-				<a href="mupdate.jsp"><button type="button" id="fbtn">회원정보 수정</button></a>
+				<a href="mupdate.jsp?id=<%=mdto.getId()%>"><button type="button" id="fbtn">회원정보 수정</button></a>
 				<a href="mdelete.jsp"><button type="button" id="fbtn">회원정보 삭제</button></a>
 				<a href="mlist.jsp"><button type="button">회원정보 리스트</button></a>
 		</div>

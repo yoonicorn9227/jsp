@@ -22,7 +22,7 @@
 		<h1><%=session.getAttribute("session_name") %> 회원님 환영합니다</h1>
 		<ul>
 			<li><a href="mlogout.jsp">로그아웃</a></li>
-			<li><a href="mUpdate.jsp">회원정보수정</a></li>
+			<li><a href="mupdate.jsp">회원정보수정</a></li>
 			<li><a href="mlist.jsp">회원전체리스트</a></li>
 		</ul>
 		<% }%>
