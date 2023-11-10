@@ -4,7 +4,7 @@ import java.security.Timestamp;
 
 public class MemberDto {
 
-	private  String id;
+	private String id;
 	private String pw;
 	private String name;
 	private String phone;
@@ -29,7 +29,7 @@ public class MemberDto {
 		this.phone = phone;
 		this.gender = gender;
 		this.hobby = hobby;
-	}//mdate없는 생성자
+	}//mdate 없는 생성자
 	
 	
 	public MemberDto(String id, String pw, String name, String phone, String gender, String hobby, Timestamp mdate) {

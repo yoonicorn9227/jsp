@@ -16,7 +16,7 @@ public class DoM_login extends HttpServlet {
        
 
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DoM_write doAction");
+		System.out.println("DoM_login doAction");
 		HttpSession session = request.getSession(); //세션선언
 		request.setCharacterEncoding("UTF-8");
 		String uid=request.getParameter("id");

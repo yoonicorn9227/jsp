@@ -33,7 +33,7 @@ public class DoM_write extends HttpServlet {
 		MemberDto mdto = new MemberDto(id,pw,name,phone,gender,hobby);
 		
 		//db연결
-		MemberDao mdao = new MemberDao();
+		MemberDao mdao = new MemberDao(); //DAO 객체선언
 		int result=mdao.insertMember(mdto);
 		if(result!=1) {
 			msg = "회원정보가 저장되지 않았습니다. 다시 입력하세요!";

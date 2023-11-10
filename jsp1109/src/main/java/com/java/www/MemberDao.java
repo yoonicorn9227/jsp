@@ -30,7 +30,7 @@ public class MemberDao {
 			pstmt.setString(4, dto.getPhone());
 			pstmt.setString(5, dto.getGender());
 			pstmt.setString(6, dto.getHobby());
-			result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate(); //insert, update, delete는 executeUpdate
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,9 +42,9 @@ public class MemberDao {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-			}
+			}//try
 
-		return result;
+		return result; //데이터가 있으면 result = 1 , 없으면 result = -1
 	}//insertMember()
 
 	
@@ -80,8 +80,6 @@ public class MemberDao {
 				e2.printStackTrace();
 			}
 		}//try
-		
-		
 		return mdto;
 	}//loginCheck() - 로그인 체크 메소드
 	
@@ -106,12 +104,6 @@ public class MemberDao {
 			}
 		}
 		return connection;
-	}
+	}//getConnection() : 커넥션 풀에서 connection을 가져오는 메소드
 
-
-
-	
-
-
-	
 }//CLASS(DAO)
