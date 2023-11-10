@@ -44,7 +44,7 @@
 					</tr>
 				</table>
 				<button type="button" id="fbtn">로그인</button>
-				<a href="mindex.jsp"><button type="button" onclick>메인홈</button></a>
+				<a href="mindex.jsp"><button type="button">메인홈</button></a>
 			</form>
 			</div>
 	</body>

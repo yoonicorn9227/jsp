@@ -55,9 +55,9 @@
 					mdto.getMdate();
 				%>
 				<tr>
-					<td><a href="mUpdate.jsp"><%=mdto.getId() %><a></a></td>
+					<td><%=mdto.getId() %></td>
 					<td><%=mdto.getPw() %></td>
-					<td><%=mdto.getName() %></td>
+					<td><a href="mview.jsp?id=<%=mdto.getId()%>"><%=mdto.getName() %><a></td>
 					<td><%=mdto.getGender() %></td>
 					<td><%=mdto.getMdate()%></td>
 				</tr>

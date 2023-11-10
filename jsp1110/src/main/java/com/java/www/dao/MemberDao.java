@@ -22,6 +22,14 @@ public class MemberDao {
 	String[] hobbys = null;
 	MemberDto mdto = null;
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	//회원정보 입력 메소드(회원가입)
 	public int memberInsert(MemberDto mdto) {
 		int result=0;
@@ -55,9 +63,46 @@ public class MemberDao {
 		return result;
 	}//memberInsert()
 	
+	//1명 회원 리스트 메소드(new MemberDto()에만 담는다)
+	public MemberDto memberOne(String uid) {
+		MemberDto mdto = null;
+		try {
+			conn=getConnection();
+			query="select * from member where id=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uid);
+			System.out.println("connection : "+uid);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				id=rs.getString("id");
+				System.out.println("while id : "+id);
+				pw=rs.getString("pw");
+				name=rs.getString("name");
+				phone=rs.getString("phone");
+				gender=rs.getString("gender");
+				hobby=rs.getString("hobby");
+				mdate=rs.getTimestamp("mdate");
+				mdto=new MemberDto(id, pw, name, phone, gender, hobby, mdate);
+			}//while
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {e2.printStackTrace();}
+		}//try
+		
+		return mdto;
+	}//memberOne() : 1명 회원정보 가져오기 메소드
 	
 	
-	//전체회원리스트
+	
+	//전체회원리스트 메소드
 	public ArrayList<MemberDto> memberAll(){
 		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
 		
@@ -142,12 +187,7 @@ public class MemberDao {
 		
 		} catch (Exception e) {e.printStackTrace();}
 		 
-		
 		return connection;
 	}//Connection getConnection()
-	
-	
-	
-	
 	
 }//CLASS : MemberDAO : DAO에서만 데이터 접근
