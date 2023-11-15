@@ -28,7 +28,6 @@ public class BoardDao {
 
 	//1. 전체게시글 가져오기 - selectAll()
 		public ArrayList<BoardDto> selectAll(){
-			ArrayList<BoardDto> list = new ArrayList();
 			try {
 				conn=getConnection();
 				query="select * from ( select row_number() over (order by bno desc) rnum, a.* from board a) where rnum between 1 and 10";
