@@ -33,7 +33,7 @@ public class doBUpdateService implements Service {
 			//파일이름가져오기
 			Enumeration files = multi.getFileNames();
 			//1개의 input type=file 있기때문에 무조건 실행됨.
-			if(files.hasMoreElements()) {
+			if(files.hasMoreElements()) {//input type = file 일겨우 있는것으로 판단
 					String f = (String)files.nextElement(); //하나를 들고온다
 					bfile=multi.getFilesystemName(f);//신규로 파일이 등록될때 | 파일첨부가 없으면 null, 있으면 파일이름을 넣어줌
 			}//if

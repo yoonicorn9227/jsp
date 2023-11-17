@@ -54,9 +54,7 @@ public class BoardDao {
 					if(rs!=null) rs.close();
 					if(pstmt!=null) pstmt.close();
 					if(conn!=null) conn.close();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+				} catch (Exception e2) {e2.printStackTrace();}
 			}//try
 			return list;
 		}//전체게시글 가져오기 - selectAll()
