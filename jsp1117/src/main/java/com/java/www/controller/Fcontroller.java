@@ -89,7 +89,6 @@ public class Fcontroller extends HttpServlet {
 				System.out.println("컨트롤러 : bDelete.jsp호출"); //확인
 				url="bDelete.jsp";
 				break;
-				
 		}//switch(if문대신)
 		
 		//url이 있을때만, dispatcher 사용
