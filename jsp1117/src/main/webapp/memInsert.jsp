@@ -15,6 +15,8 @@
 			th{width: 200px; height: 40px;}
 			td{width: 400px;}
 			button{width: 200px; height: 60px; margin-top: 30px; background:orange;}
+			td * {vertical-align: middle;}
+			#idCheck{display: inline-block; width: 100px; height: 20px; margin-top: 0;}
 		</style>
 		<script>
 			$(function(){
@@ -24,9 +26,6 @@
 						$("#id").focus();
 						return false;
 					}//if
-					
-					
-					
 					alert("회원가입이 되었습니다.")
 					m_frm.submit();
 				});//#fbtn.click
@@ -37,7 +36,7 @@
 	<body>
 		<div>
 			<h1>회원가입</h1>
-			<form name="m_frm" method="post" action="Do_mwrite">
+			<form name="m_frm" method="post" action="doMemInsert.do">
 				<table>
 					<tr>
 						<th>아 이 디</th>

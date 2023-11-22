@@ -91,7 +91,11 @@
 		  	<c:forEach items="${list}" var="bdto">
 			     <tr>
 				    <td>${bdto.bno }</td>
-				    <td><a href="bView.do?bno=${bdto.bno}">${bdto.btitle }</a></td>
+				    <td>
+				    <a href="bView.do?bno=${bdto.bno}">
+				    <c:forEach var="s" begin="1" end="${bdto.bindent}" step="1">▶</c:forEach>
+				    ${bdto.btitle }
+				    </a></td>
 				    <td>${bdto.id }</td>
 				    <td><fmt:formatDate value="${bdto.bdate}" pattern="yyyy-MM-dd"/></td>
 				    <td>${bdto.bhit }</td>

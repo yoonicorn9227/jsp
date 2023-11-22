@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.java.www.service.MDoLoginService;
+import com.java.www.service.MInsertService;
 import com.java.www.service.Service;
 import com.java.www.service.BDeleteService;
 import com.java.www.service.BInsertService;
 import com.java.www.service.BListService;
+import com.java.www.service.BReplyService;
 import com.java.www.service.BSelectOneService;
 import com.java.www.service.BUpdateService;
+import com.java.www.service.DoBReplyService;
 
 @WebServlet("*.do")
 public class Fcontroller extends HttpServlet {
@@ -88,6 +91,26 @@ public class Fcontroller extends HttpServlet {
 				System.out.println(" bno : " + request.getParameter("bno"));
 				System.out.println("컨트롤러 : bDelete.jsp호출"); //확인
 				url="bDelete.jsp";
+				break;
+			case "/doMemInsert.do": //6.  회원가입  - Insert
+				service = new MInsertService();
+				service.execute(request, response);
+				url="doMemInsert.jsp";
+				break;
+			case "/bReply.do": //7.  답글달기  - select
+				service = new BReplyService();
+				service.execute(request, response);
+				//확인용
+				System.out.println("bno : " + request.getParameter("bno")); //확인
+				System.out.println("컨트롤러 : bReply.jsp호출"); //확인
+				url="bReply.jsp";
+				break;
+			case "/doBReply.do": //7-1.  답글달기 저장  - insert
+				service = new DoBReplyService();
+				service.execute(request, response);
+				//확인용
+				System.out.println("컨트롤러 : doBReply.jsp호출"); //확인
+				url="doBReply.jsp";
 				break;
 		}//switch(if문대신)
 		

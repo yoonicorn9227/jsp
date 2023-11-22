@@ -24,6 +24,18 @@ public class BoardDto {
 		this.bfile = bfile;
 	}// 4개생성자 (제목,내용,작성자,조회수)
 
+	
+	public BoardDto(String btitle, String bcontent, String id, int bgroup, int bstep, int bindent, String bfile) {
+		super();
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.id = id;
+		this.bgroup = bgroup;
+		this.bstep = bstep;
+		this.bindent = bindent;
+		this.bfile = bfile;
+	}
+
 	public BoardDto(int bno, String btitle, String bcontent, String id, String bfile) {
 		this.bno = bno;
 		this.btitle = btitle;
