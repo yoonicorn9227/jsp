@@ -29,7 +29,6 @@ public class MemberDao {
 		} catch (Exception e) {e.printStackTrace();}
 		
 		return connection;
-		
 	}// getConnection()
 	
 	// 1.로그인 체크 메소드
