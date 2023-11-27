@@ -21,16 +21,13 @@
 		 				<li class="txtbold"><a href="m_info_input.do">${session_name}님</a></li>
 		 				<li><a href="logout.do">로그아웃</a></li>
 	 				</c:if>
-	 				
-	 				
-	 				
 	 				<li><a href="n_list.do">고객행복센터</a></li>
 	 				<li><a href="">배송정보검색</a></li>
 	 				<li><a href="">기프트카드 등록</a></li>
 	 			</ul>
 	 		</div>
 	 		<nav>
-	 			<h1></h1>
+	 			<a href="main.do"><h1></h1></a>
 	 			<ul>
 	 				<li>COOKIT소개</li>
 	 				<li>COOKIT메뉴</li>

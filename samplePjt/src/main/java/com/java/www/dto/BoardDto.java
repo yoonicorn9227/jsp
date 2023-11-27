@@ -32,6 +32,16 @@ public class BoardDto {
 		this.bfile = bfile;
 	}// 5개 생성자(번호, 제목, 내용, 아이디, 파일)
 
+	public BoardDto(String btitle, String bcontent, String id, int bgroup, int bstep, int bindent,String bfile) {
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.id = id;
+		this.bgroup = bgroup;
+		this.bstep = bstep;
+		this.bindent = bindent;
+		this.bfile = bfile;
+	}
+	
 	public BoardDto(int bno, String btitle, String bcontent, Timestamp bdate, String id, int bgroup, int bstep,
 			int bindent, int bhit, String bfile) {
 		this.bno = bno;
@@ -45,6 +55,7 @@ public class BoardDto {
 		this.bhit = bhit;
 		this.bfile = bfile;
 	}// 전체생성자
+
 
 	// ●Getter&Setter
 	public int getBno() {

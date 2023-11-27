@@ -1,25 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pages - Login</title>
+  <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/write.css">
+  <link rel="stylesheet" href="css/read.css">
 </head>
 
 <body>
   <header>
-    <ul>
-      <li>회원가입</li> <span>|</span>
-      <li>로그인</li> <span>|</span>
-      <li>고객행복센터</li> <span>|</span>
-      <li>배송지역검색</li> <span>|</span>
-      <li>기프트카드 등록</li>
-    </ul>
+   <ul>
+	<c:if test="${session_id==null }">
+		<li><a href="join01_terms.do">회원가입</a></li>
+		<li><a href="login.do">로그인</a></li>
+	</c:if>
+	<c:if test="${session_id!=null }">
+		<li class="txtbold"><a href="m_info_input.do">${session_name}님</a></li>
+		<li><a href="logout.do">로그아웃</a></li>
+	</c:if>
+	<li><a href="n_list.do">고객행복센터</a></li>
+	<li><a href="">배송정보검색</a></li>
+	<li><a href="">기프트카드 등록</a></li>
+</ul>
   </header>
-
+<a href="main.do"><h1></h1></a>
   <nav>
     <div class="logo"></div>
 
@@ -45,52 +56,35 @@
   </nav>
 
   <section>
-    <h1>관리자 글쓰기</h1>
-    <hr>
+    <h1>NOTICE</h1>
 
-    <form action="/write" name="write" method="post">
-      <table>
-        <colgroup>
-          <col width="15%">
-          <col width="85%">
-        </colgroup>
-        <tr>
-          <th>분류</th>
-          <td>
-            <div class="category-wrapper">
-              <select name="category" id="category">
-                <option value="notice">공지</option>
-                <option value="event">이벤트</option>
-              </select>  
-            </div>
+    <table>
+      <tr>
+        <th><strong>제목</strong><span class="separator">|</span>${bdto.btitle }</th>
+      </tr>
+      <tr>
+        <td><strong>날짜</strong><span class="separator">|</span><fmt:formatDate value="${bdto.bdate}" pattern="yyyy-MM-dd"/></td>
+      </tr>
+      <tr>
+        <td class="article"> ${bdto.bcontent }</td>
+      </tr>
+      <tr>
+        <td class="article">
+          <img src="upload/${bdto.bfile}" alt="" width="50%">
           </td>
-        </tr>
-        <tr>
-          <th>제목</th>
-          <td>
-            <input type="text" name="title">
-          </td>
-        </tr>
-        <tr>
-          <th>내용</th>
-          <td>
-            <textarea name="content" cols="50" rows="10"></textarea>
-          </td>
-        </tr>
-        <tr>
-          <th>이미지 표시</th>
-          <td>
-            <input type="file" name="file" id="file">
-          </td>
-        </tr>
-      </table>
-      <hr>
-      <div class="button-wrapper">
-        <button type="submit" class="write">작성완료</button>
-        <button type="button" class="cancel">취소</button>
-      </div>
-    </form>
+      </tr>
+      <tr>
+        <td><strong>다음글</strong> <span class="separator">|</span> [키즈잼] 2월 프로그램 안내</td>
+      </tr>
+      <tr>
+        <td><strong>이전글</strong> <span class="separator">|</span> [키즈잼] 2020년 1분기 정기 휴관일 안내</td>
+      </tr>
+    </table>
 
+    <a href="n_list.do"><div class="list">목록</div></a>
+    <div class="list">삭제</div>
+    <div class="list">수정</div>
+    <a href="n_reply.do?bno=${bdto.bno}"><div class="list">답글</div></a>
   </section>
 
   <footer>
