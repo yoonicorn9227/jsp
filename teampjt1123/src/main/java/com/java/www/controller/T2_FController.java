@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.java.www.service.Ser_MView;
 import com.java.www.service.Service;
 
 @WebServlet("*.do")
@@ -33,6 +35,16 @@ public class T2_FController extends HttpServlet {
 		switch (fileName) {
 		case "/a_login.do":
 			response.sendRedirect("a_login.jsp");
+			break;
+		case "/a_main.do":
+			HttpSession session = request.getSession();
+			session.setAttribute("session_id", "aaa");
+			response.sendRedirect("a_main.jsp");
+			break;
+		case "/a_myPage.do": //회원정보 보기
+			service = new Ser_MView();
+			service.execute(request, response);
+			url="a_myPage.jsp";
 			break;
 		}// switch
 

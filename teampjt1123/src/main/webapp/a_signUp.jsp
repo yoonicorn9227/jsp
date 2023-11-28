@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -73,9 +75,7 @@
 					<button type="submit" class="subBtn">가입하기</button>
 					<button type="submit" class="resBtn">취소하기</button>
 				</td>
-				
 			</tr>
-	    
 	</form>
 
 	<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">

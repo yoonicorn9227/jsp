@@ -1,9 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
+	<c:if test="${session_id==null}">
+		<script>
+			alert("로그인을 해야만 접속이 가능합니다.");
+			location.href="a_login.do";
+		</script>
+	</c:if>
+	<c:if test="${session_id=='aaa'}">
+		<script>
+			alert("로그인을 해야만 접속이 가능합니다.");
+			location.href="a_login.do";
+		</script>
+	</c:if>
 	<title>main</title>
 	<style>
 		body{margin: 0; overflow: hidden;}
@@ -49,7 +62,7 @@
 			<div id="center">
 				<ul id="menu">
 					<li id="menu_my">
-					<a href="#"><img src="images/my.png"></a>
+					<a href="a_myPage.jsp"><img src="images/my.png"></a>
 					</li>
 					<li id="menu_my">
 					<a href="#"><img src="images/list.png"></a>
