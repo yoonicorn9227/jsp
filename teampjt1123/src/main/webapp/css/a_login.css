@@ -44,7 +44,7 @@ body {
 	margin-bottom: 20px;
 	text-align: center;
 	margin-left: 80px;
-	font-family: 'fontYouandiModernTR' , sans-serif;;
+	font-family: 'fontYouandiModernTR' , sans-serif;
 	text-shadow:3px 3px 3px #0038a8;
 }
 
@@ -80,7 +80,7 @@ body {
 }
 
 #log_f>label {
-	color: #999999;
+	color: #FFD500 ; font-weight: 700; text-shadow:5px 5px 5px black; font-family: 'fontYouandiModernTR' , sans-serif;
 }
 
 #log_f input[type="checkbox"]+label {
