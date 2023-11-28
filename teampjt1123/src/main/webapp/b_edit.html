@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>요청게시판-b_view.jps</title>
-     <link rel="stylesheet" href="css/css.css">
-     <link href="https://fonts.cdnfonts.com/css/nasa" rel="stylesheet">
-    <style>
+    <title>공지사항</title>
+    <link rel="stylesheet" href="css/css.css">
+     <style>
 		footer {margin-top: 20px;padding: 65px 0;border-top: 1px solid #ddd;
 		text-align: center; display: flex;  height: 100%;
 		font-size: 1.4rem; background-color:#003F88; color: #FFD500;}
@@ -36,50 +35,41 @@
 	    	</ul>
 		</nav>
 	</header>
+</head>
 <body>
     <div class="board_wrap">
         <div class="board_title">
-            <strong>공지사항</strong>
-            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+            <strong>게시글 수정</strong>
+            <p>요청게시판 게시글을 수정합니다.</p>
         </div>
-        <div class="board_view_wrap">
-            <div class="board_view">
+        <div class="board_write_wrap">
+            <div class="board_write">
                 <div class="title">
-                    글 제목이 들어갑니다.
+                    <dl>
+                        <dt>제목</dt>
+                        <dd><input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다"></dd>
+                    </dl>
                 </div>
                 <div class="info">
                     <dl>
-                        <dt>번호</dt>
-                        <dd>1</dd>
-                    </dl>
-                    <dl>
                         <dt>글쓴이</dt>
-                        <dd>김이름</dd>
+                        <dd><input type="text" placeholder="글쓴이 입력" value="김이름"></dd>
                     </dl>
                     <dl>
-                        <dt>작성일</dt>
-                        <dd>2021.1.16</dd>
-                    </dl>
-                    <dl>
-                        <dt>첨부파일</dt>
-                        <dd>3.jpg</dd>
+                        <dt>비밀번호</dt>
+                        <dd><input type="password" placeholder="비밀번호 입력" value="1234"></dd>
                     </dl>
                 </div>
                 <div class="cont">
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다<br>
-                    글 내용이 들어갑니다
+                    <textarea placeholder="내용 입력">
+글 수정글이 들어갑니다
+
+				</textarea>
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="list.html" class="on">목록</a>
-                <a href="edit.html">수정</a>
-                <a href="#">삭제</a>
+                <a href="view.html" class="on">수정</a>
+                <a href="view.html">취소</a>
             </div>
         </div>
     </div>
