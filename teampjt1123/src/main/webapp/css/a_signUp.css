@@ -63,7 +63,7 @@ span.error-message {
 	text-align: center;
 	font-size: 14px;
 }
-#pwCheck{width: 200px; color:#fff; float: right; position: relative; left: 30px;; top:10px;}
+#pwCheck{width: 200px; color:#fff; float: right; position: relative; left: 10px;; top:8px;}
 #selBtn{text-align: center;}
 th{color:  #fff;}
 td{width: 500px; }
