@@ -1,29 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>COOKIT</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/style_main.css">
+		<script>
+		   $(function(){
+			  $(".modal").click(function(){
+				  alert("close");
+				  $(".modal").addClass("popOff");
+			  }); 
+		   });
+		</script>
+		<style>
+		.popOff{display:none; }
+        .modal{
+            position:fixed; top:0; left:0;
+            width:100%; height:100%;
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal_body{
+            position:absolute; top:25%; left:50%;  
+            width:400px; height:424px; 
+            padding:40px;  
+            text-align: center;
+
+            background:url('images/pop1.jpg');
+            background-size:100%;
+            /* background-color: rgb(255,255,255); */ 
+            border-radius:10px; 
+            box-shadow:0 2px 3px 0 rgba(34,36,38,0.15);  
+            transform:translateX(-50%); 
+        }
+    </style>
+		
 	</head>
 	<body>
+	    
 	 	<header>
 	 		<div id="nav_up">
 	 			<ul>
-	 				<c:if test="${session_id==null }">
+	 			    <c:if test="${session_id==null}">
 		 				<li><a href="join01_terms.do">회원가입</a></li>
 		 				<li><a href="login.do">로그인</a></li>
-	 				</c:if>
-	 				<c:if test="${session_id!=null }">
+	 			    </c:if>
+	 			    <c:if test="${session_id!=null}">
 		 				<li class="txtbold"><a href="m_info_input.do">${session_name}님</a></li>
 		 				<li><a href="logout.do">로그아웃</a></li>
-	 				</c:if>
+	 			    </c:if>
 	 				<li><a href="n_list.do">고객행복센터</a></li>
-	 				<li><a href="">배송정보검색</a></li>
-	 				<li><a href="">기프트카드 등록</a></li>
+	 				<li>배송정보검색</li>
+	 				<li>기프트카드 등록</li>
 	 			</ul>
 	 		</div>
 	 		<nav>
@@ -444,5 +476,8 @@
 			 		</div>
 			 	</div>
 		</footer>
+		<div class="modal">
+	       <div class="modal_body"></div>
+	    </div>
 	</body>
 </html>

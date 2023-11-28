@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.java.www.service.MInsertService;
 import com.java.www.service.MSelectOneService;
 import com.java.www.service.MUpdateService;
+import com.java.www.service.N_DeleteService;
 import com.java.www.service.N_InsertService;
 import com.java.www.service.N_ReplyInsertService;
 import com.java.www.service.N_SelectOneService;
+import com.java.www.service.N_UpdateService;
 import com.java.www.service.N_listSelectService;
 import com.java.www.service.Service;
 import com.java.www.service.doLoginService;
@@ -39,7 +41,7 @@ public class FController extends HttpServlet {
 		String url=null;
 		Service service=null;
 		
-		//▼경로
+		//▼경로 Switch
 		switch(fileName) {
 		case "/main.do" : //메인페이지
 			response.sendRedirect("main.jsp");
@@ -103,6 +105,21 @@ public class FController extends HttpServlet {
 			service = new N_ReplyInsertService();
 			service.execute(request, response);
 			url="doN_reply.jsp";
+			break;
+		case "/n_update.do" : //
+			service = new N_SelectOneService();
+			service.execute(request, response);
+			url="n_update.jsp";
+			break;
+		case "/doN_update.do" : //
+			service = new N_UpdateService();
+			service.execute(request, response);
+			url="doN_update.jsp";
+			break;
+		case "/n_delete.do" : //
+			service = new N_DeleteService();
+			service.execute(request, response);
+			url="n_delete.jsp";
 			break;
 		default:
 			break;

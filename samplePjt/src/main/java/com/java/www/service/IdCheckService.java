@@ -1,6 +1,8 @@
 package com.java.www.service;
+
 import com.java.www.dao.MemberDao;
 import com.java.www.dto.MemberDto;
+
 public class IdCheckService {
 	
 	public String idCheck(String id) {
@@ -14,4 +16,5 @@ public class IdCheckService {
 		
 		return result;
 	}
+
 }

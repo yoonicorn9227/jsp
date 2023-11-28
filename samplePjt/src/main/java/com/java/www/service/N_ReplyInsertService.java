@@ -1,5 +1,6 @@
 package com.java.www.service;
 
+import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,44 +16,52 @@ public class N_ReplyInsertService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// DAO접근
+		//dao접근
 		BoardDao bdao = new BoardDao();
-
-		// 변수선언
+		
+		//변수선언
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("session_id");
-		String btitle = "", bcontent = "", bfile = "";
-		int bgroup=0, bstep=0, bindent=0;
-
-		// form 데이터 처리 MultipartRequest
+		String id = (String)session.getAttribute("session_id");
+		String btitle="",bcontent="",bfile="",category="",sword="";
+		int bgroup=0,bstep=0,bindent=0,page=1;
+		
+		//form 데이터처리 Multipart
 		String upload = "c:/upload";
-		int size = 10 * 1024 * 1024;
+		int size = 10*1024*1024;
+		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, upload, size, "UTF-8",new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request,upload,size,"utf-8",new DefaultFileRenamePolicy());
+			page = Integer.parseInt(multi.getParameter("page"));
+			category = multi.getParameter("category");
+			sword = multi.getParameter("sword");
 			btitle = multi.getParameter("btitle");
 			bcontent = multi.getParameter("bcontent");
-			bgroup=Integer.parseInt(multi.getParameter("bgroup"));
-			bstep=Integer.parseInt(multi.getParameter("bstep"));
-			bindent=Integer.parseInt(multi.getParameter("bindent"));
-			// input type=file 인것 이름모두 가져옴
-			Enumeration files = multi.getFileNames(); // name값이 각각 넘어옴. name=bfile ,name= bfile2 ....
-			while (files.hasMoreElements()) {
-				String f = (String) files.nextElement(); // 형변환(Enumeration이기 때문에 String으로 변환)
-				bfile = multi.getFilesystemName(f); // 똑같은 파일이 있을 경우 이름을 변경해서 보내줘
-			} // while
-			BoardDto bdto = new BoardDto(btitle, bcontent, id,bgroup,bstep,bindent, bfile);
-
-			// dao 접근 게시글 저장 메소드 호출
-			//1st) bstep bstep큰수들을 1씩 증가(ReplyInsert메소드 생성전)
-			bdao.stepUp(bgroup,bstep);
+			bgroup = Integer.parseInt(multi.getParameter("bgroup"));
+			bstep = Integer.parseInt(multi.getParameter("bstep"));
+			bindent = Integer.parseInt(multi.getParameter("bindent"));
+			//input type=file 인것 이름 모두를 가져옴.
+			Enumeration files = multi.getFileNames(); //
+			while(files.hasMoreElements()) {
+				String f = (String) files.nextElement(); //enum 형변환
+				bfile = multi.getFilesystemName(f); //똑같은 파일이 있을경우 이름을 변경해서 저장
+			}
 			
-			//2nd)답글달기 저장
+			BoardDto bdto = new BoardDto(btitle,bcontent,id,bgroup,bstep,bindent,bfile);
+			//dao접근 - 게시글저장메소드 호출
+			//1. bstep bstep 큰수들을 1씩 증가
+			bdao.stepUp(bgroup,bstep);
+			//2. 답글달기 저장
 			int result = bdao.replyInsert(bdto);
-
-			// request추가
+			
+			//request추가
 			request.setAttribute("result", result);
-			} catch (Exception e) {e.printStackTrace();}
+			request.setAttribute("page", page);
+			request.setAttribute("category", category);
+			request.setAttribute("sword", sword);
+			
+			
+		} catch (IOException e) {e.printStackTrace();}
 
-	}// execute(N_ReplyInsertService)
+	}
 
-}// CLASS(답글)
+}

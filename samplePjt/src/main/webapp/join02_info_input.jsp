@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<c:if test="${param.f_agree!='agree' && param.s_agree!='agree' && param.t_agree!='agree'}">
-			<script>
-				alert("약관동의 없이 회원가입을 진행할 수 없습니다.")
-				location="join01_terms.do";
-			</script>
-		</c:if>
+	    <c:if test="${param.f_agree != 'agree' && param.s_agree != 'agree' && param.t_agree != 'agree'  }">
+	      <script>
+	       alert("약관동의 없이 회원가입을 진행할 수 없습니다.");
+	       location.href="join01_terms.do";
+	      </script>
+	    </c:if>
 		<meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -22,42 +22,32 @@
 		<script>
 		  $(function(){
 			 var idConfirm = 0;
-			
+			 
 			 $("#insertBtn").click(function(){
+				//alert($("#id").val());
 				var id = $("#id").val();
-				var pw = $("#pw1").val();
-				var name = $("#name").val();
-				var f_tell = $("#f_tell").val();
-				//자바스크립트 정규표현식
-				var idPtn = /^[a-zA-Z0-9]{2,10}$/; //첫쨰자리는 무조건 영소문자,영문자,숫자가능(3~15자리)
-				var namePtn=/^[가-힣]{1,3}$/; //국문 1~3자리까지 가능
-				//var pwPtn=/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{3,}  $/; //
-				var f_tellPtn=/^[0-9]{2,3}$/; //유선전화 가능 국번 010
-				var m_tellPtn=/^[0-9]{3,4}$/; //000-9999
-				
+				//var name = $("#name").val();
+				//var pw = $("#pw1").val();
+				//var f_tell = $("#f_tell").val();
+				//var m_tell = $("#m_tell").val();
+				var idPtn = /^[a-zA-Z0-9]{2,10}$/; // 영문자 4~16자리 사이 값을 비교 패턴
+				//var idPtn = /^[a-z]{1}[a-zA-Z0-9]{3,15}$/; // 첫글자는 영문소문자, 다음부터는 영문자,숫자가능 4~16 
+				//var namePtn = /^[가-힣]{1,3}$/; // 국문 1~3자리까지 가능
+				//var pwPtn = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{3,}$/; // 영문자,숫자,특수문자1개 이상
+				//var f_tellPtn = /^[0-9]{2,3}$/; // 유선전화가능 국번 02,043,010
+				//var m_tellPtn = /^[0-9]{3,4}$/; // 415,1111
 				if(!idPtn.test(id)){
-					alert("영문,숫자 2~10자리 이하로 입력하셔야 합니다.");
-					$("#id").focus();
+					alert("영문,숫자 2-10자리 이하로 입력하셔야 합니다.");
 					return false;
-				}else{alert("아이디 정상 입력되었습니다.")}
-				
-				if(!namePtn.test(name)){
-					alert("국문만 입력가능합니다.");
-					$("#name").focus();
-					return false;
-				}else{alert("이름 정상 입력되었습니다.")}
-				
-				//if(!pwPtn.test(pw)){
-					//alert("1개 이상의 영소문자,숫자,특수문자가 포함되어야 합니다.");
-					//$("#pw").focus();
-					//return false;
-				//}else{alert("패스워드 정상 입력되었습니다.")}
-				
+				}else{
+					alert("정상입력되었습니다.");
+				}
+				//전송
 				agreeFrm.submit();
+				
+			 });
 			 
-			 });//#insertBtn
-			 
-			 //pw1,pw2비교
+			 //pw1,pw2 비교
 			 $("#pw2").keyup(function(){
 				 if($("#pw1").val()!=$("#pw2").val()){
 					 $("#txtPw").text("비밀번호가 일치하지 않습니다.");
@@ -68,10 +58,7 @@
 					 $("#txtPw").addClass("txtOn");
 					 $("#txtPw").removeClass("txtOff");
 				 }
-			 });//KeyUp
-			 
-			 
-			 
+			 });
 			 
 			 
 			 //우편번호검색
@@ -233,17 +220,17 @@
 							<label for="mail_id">이메일</label>
 						</dt>
 						<script>
-							$(function(){
-								$("#chgMail").click(function(){
-									if($("#chgMail").val()==""){
-										$("#mail_tail").val("");
-										$("#mail_tail").prop("readonly",false);
-									}else{
-										$("#mail_tail").val($("#chgMail").val())
-										$("#mail_tail").prop("readonly",true);
-									}//if
-								});//#chgMail
-							});//제이쿼리
+						    $(function(){
+						    	$("#chgMail").change(function(){
+						    		if($("#chgMail").val()==""){
+						    			$("#mail_tail").val("");
+						    			$("#mail_tail").prop("readonly",false);
+						    		}else{
+							    		$("#mail_tail").val($("#chgMail").val());
+							    		$("#mail_tail").prop("readonly",true);
+						    		}
+						    	});
+						    });
 						</script>
 						<dd>
 							<input type="text" id="mail_id" name="mail_id" required />
@@ -251,7 +238,7 @@
 							<input type="text" id="mail_tail" name="mail_tail" required />
 							<select id="chgMail">
 								<option value="" selected>직접입력</option>
-								<option value="gmail.com">G메일</option>
+								<option value="gmail.com">지메일</option>
 								<option value="naver.com">네이버</option>
 								<option value="daum.net">다음</option>
 								<option value="nate.com">네이트</option>
@@ -300,6 +287,8 @@
 							</div>
 						</dd>
 					</dl>
+					
+					
 				</fieldset>
 				<h4>
 					선택 입력 정보 
@@ -329,18 +318,19 @@
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="book" value="book" />
-									<label for="shopping">독서</label>
+									<label for="book">독서</label>
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="culture" value="culture" />
-									<label for="culture">문화●예술</label>
+									<label for="culture">문화예술</label>
 								</li>
+								
 							</ul>
 						</dd>
 					</dl>
 				</fieldset>
 				<div id="info_input_button">
-					<input type="reset"  value="취소하기" />
+					<input type="reset" value="취소하기" />
 					<input type="button" id="insertBtn" value="가입하기" />
 				</div>
 				

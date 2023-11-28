@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/a_signUp.css">
     <title>회원가입</title>
+    <link rel="stylesheet" href="css/a_signUp.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	<form name="signFrm" method="post" action="회원가입 처리 페이지 URL">
@@ -22,7 +22,10 @@
 				<td><input type="password" name="pw1" id="pw1" placeholder="Password" ></td>
 			</tr>
 			<th>패스워드 확인</th>
-				<td><input type="password" name="pw2" id="pw2" placeholder="Password" ></td>
+				<td>
+					<input type="password" name="pw2" id="pw2" placeholder="비밀번호 재입력" >
+					<div id="pwCheck">※비밀번호를 확인합니다.</div>
+				</td>
 			</tr>
 			<tr>
 			<th>회원이름</th>
@@ -34,10 +37,10 @@
 			</tr>
 			<tr>
 			<th>휴대전화</th>
-				<td><input type="text" name="phone" id="phone" placeholder="휴대전화"></td>
+				<td><input type="text" name="phone" id="phone" placeholder="ex) 010-1234-5678"></td>
 			</tr>
 			<th>e-mail</th>
-				<td><input type="text" name="email" id="email" placeholder="korev05@emali.com"></td>
+				<td><input type="text" name="email" id="email" placeholder="ex) korev05@emali.com"></td>
 			</tr>
 			<tr>
 			<th>회원성별</th>

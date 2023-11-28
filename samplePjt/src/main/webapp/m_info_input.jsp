@@ -5,12 +5,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<c:if test="${session_id==null}">
-			<script>
-				alert("로그인을 하셔야 접근이 가능합니다.")
-				location="login.do";
-			</script>
-		</c:if>
+	    <c:if test="${session_id == null }">
+	      <script>
+	       alert("로그인을 하셔야 접근이 가능합니다.");
+	       location.href="login.do";
+	      </script>
+	    </c:if>
 		<meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -23,46 +23,30 @@
 		<script>
 		  $(function(){
 			 var idConfirm = 0;
-			
+			 
 			 $("#insertBtn").click(function(){
+				//alert($("#id").val());
 				var id = $("#id").val();
-				var pw = $("#pw1").val();
-				var name = $("#name").val();
-				var f_tell = $("#f_tell").val();
-				//자바스크립트 정규표현식
-				var idPtn = /^[a-zA-Z0-9]{2,10}$/; //첫쨰자리는 무조건 영소문자,영문자,숫자가능(3~15자리)
-				var namePtn=/^[가-힣]{1,3}$/; //국문 1~3자리까지 가능
-				//var pwPtn=/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*]).{3,}  $/; //
-				var f_tellPtn=/^[0-9]{2,3}$/; //유선전화 가능 국번 010
-				var m_tellPtn=/^[0-9]{3,4}$/; //000-9999
-				
+				//var name = $("#name").val();
+				//var pw = $("#pw1").val();
+				//var f_tell = $("#f_tell").val();
+				//var m_tell = $("#m_tell").val();
+				var idPtn = /^[a-zA-Z0-9]{2,10}$/; // 영문자 4~16자리 사이 값을 비교 패턴
+				//var idPtn = /^[a-z]{1}[a-zA-Z0-9]{3,15}$/; // 첫글자는 영문소문자, 다음부터는 영문자,숫자가능 4~16 
+				//var namePtn = /^[가-힣]{1,3}$/; // 국문 1~3자리까지 가능
+				//var pwPtn = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{3,}$/; // 영문자,숫자,특수문자1개 이상
+				//var f_tellPtn = /^[0-9]{2,3}$/; // 유선전화가능 국번 02,043,010
+				//var m_tellPtn = /^[0-9]{3,4}$/; // 415,1111
 				if(!idPtn.test(id)){
-					alert("영문,숫자 2~10자리 이하로 입력하셔야 합니다.");
-					$("#id").focus();
+					alert("영문,숫자 2-10자리 이하로 입력하셔야 합니다.");
 					return false;
-				}else{alert("아이디 정상 입력되었습니다.")}
-				
-				//if(!namePtn.test(name)){
-					//alert("국문만 입력가능합니다.");
-					//$("#name").focus();
-					//return false;
-				//}else{alert("이름 정상 입력되었습니다.")}
-				
-				//if(!pwPtn.test(pw)){
-					//alert("1개 이상의 영소문자,숫자,특수문자가 포함되어야 합니다.");
-					//$("#pw").focus();
-					//return false;
-				//}else{alert("패스워드 정상 입력되었습니다.")}
-				
+				}else{
+					alert("정상입력되었습니다.");
+				}
+				//전송
 				agreeFrm.submit();
-			 
-			 });//#insertBtn
-			 
-			 //pw1,pw2비교
-			
-			 
-			 
-			 
+				
+			 });
 			 
 			 
 			 //우편번호검색
@@ -74,11 +58,9 @@
 			            $("#address1").val(data.address);
 			        }
 			    }).open();
-				
-			 });//우편번호
+			 });
 			 
-		 
-		  });
+		  });//jquery
 		</script>
 	</head>
 	<body>
@@ -113,6 +95,7 @@
 		</header>
 		<section>
 			<form name="agreeFrm" method="post" action="doM_info_input.do">
+			<input type="hidden" name="id" value=${mdto.id }>
 				<div id="subBanner"></div>
 				<div id="locationN">
 					<ul>
@@ -159,7 +142,7 @@
 							<div></div>
 							<label for="id">아이디</label>
 						</dt>
-						<dd>${mdto.id}</dd>
+						<dd>${mdto.id }</dd>
 					</dl>
 					<dl id="join_pw1_dl">
 						<dt>
@@ -178,8 +161,8 @@
 							<div></div>
 							<label for="f_tell">휴대전화</label>
 						</dt>
-						<!-- 010-1111-1111 -> 010/1111/1111 -->
-						<c:set var="phones" value="${fn:split(mdto.phone,'-')}" />
+						<!-- 010-1111-1111  -> 010 / 1111 / 1111   -->
+						<c:set var="phones" value="${fn:split(mdto.phone,'-')}"  />
 						<dd>
 							<input type="text" id="f_tell" name="f_tell" maxlength="3" value="${phones[0]}" required />
 							<span> - </span>
@@ -195,17 +178,19 @@
 						</dt>
 						<dd>
 							<div>
-								<input type="radio" name="gender" id="male" value="male" 
-								<c:if test="${fn:contains(mdto.gender,'Male')}">checked</c:if>
-								 />
+								<input type="radio" name="gender" id="male" value="Male" 
+								  <c:if test="${fn:contains(mdto.gender,'Male')}">checked</c:if>    
+								/>
 								<label for="male">남성</label>
-								<input type="radio" name="gender" id="female" value="female" 
-								<c:if test="${fn:contains(mdto.gender,'Female')}">checked</c:if>
+								<input type="radio" name="gender" id="female" value="Female" 
+								  <c:if test="${fn:contains(mdto.gender,'Female')}">checked</c:if>
 								/>
 								<label for="female">여성</label>
 							</div>
 						</dd>
 					</dl>
+					
+					
 				</fieldset>
 				<h4>
 					선택 입력 정보 
@@ -219,53 +204,59 @@
 							<ul>
 								<li>
 									<input type="checkbox" name="hobby" id="game" value="game" 
-									<c:if test="${fn:contains(mdto.hobby,'game')}">checked</c:if>
+									  <c:if test="${fn:contains(mdto.hobby,'game')}">checked</c:if>
 									/>
 									<label for="game">게임</label>
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="golf" value="golf" 
-									<c:if test="${fn:contains(mdto.hobby,'golf')}">checked</c:if>
+									  <c:if test="${fn:contains(mdto.hobby,'golf')}">checked</c:if>
 									/>
 									<label for="golf">골프</label>
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="run" value="run" 
-									<c:if test="${fn:contains(mdto.hobby,'run')}">checked</c:if>
+									  <c:if test="${fn:contains(mdto.hobby,'run')}">checked</c:if>
 									/>
 									<label for="run">조깅</label>
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="cook" value="cook" 
-									<c:if test="${fn:contains(mdto.hobby,'cook')}">checked</c:if>
+									  <c:if test="${fn:contains(mdto.hobby,'cook')}">checked</c:if>
 									/>
 									<label for="cook">요리</label>
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="book" value="book" 
-									<c:if test="${fn:contains(mdto.hobby,'book')}">checked</c:if>
+									  <c:if test="${fn:contains(mdto.hobby,'book')}">checked</c:if>
 									/>
-									<label for="shopping">독서</label>
+									<label for="book">독서</label>
 								</li>
 								<li>
 									<input type="checkbox" name="hobby" id="culture" value="culture" 
-									<c:if test="${fn:contains(mdto.hobby,'culture')}">checked</c:if>
+									  <c:if test="${fn:contains(mdto.hobby,'culture')}">checked</c:if>
 									/>
-									<label for="culture">문화●예술</label>
+									<label for="culture">문화예술</label>
 								</li>
+								
 							</ul>
 						</dd>
 					</dl>
 				</fieldset>
 				<div id="info_input_button">
-					<input type="reset"  value="취소하기" />
+					<input type="reset" value="취소하기" />
 					<input type="button" id="insertBtn" value="수정하기" />
 				</div>
 				
 			</form>
 		</section>
 		
-		<!-- footer영역 -->
+		
+		
+		
+		
+		
+		
 		<footer>
 			<div id="footer_wrap">
 				<div id="footer_cont">
