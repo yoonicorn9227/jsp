@@ -64,7 +64,7 @@
 	<input type="hidden" name="p_num" id="p_num" value="${smdto.p_num}">
 	<input type="hidden" name="gender" id="gender" value="${smdto.gender}">
 	    <table>
-			<h1 id="idtitle">회원정보 수정</h1>
+			<h1 id="idtitle">[${session_name}]님 회원정보 수정</h1>
 			<tr>
 			<th>아 이 디</th> 
 				<td>${smdto.id} </td>
