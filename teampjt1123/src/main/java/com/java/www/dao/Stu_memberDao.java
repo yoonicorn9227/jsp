@@ -17,9 +17,10 @@ public class Stu_memberDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	String query,id,pw,name,gender,phone,email,region;
-	int p_num;
+	String p_num;
 	Timestamp sdate;
 	Stu_memberDto smdto = null;
+	int result;
 	// ★커넥션풀에서 Connection객체 가져오기
 	public Connection getConnection() {
 		Connection connection = null;
@@ -31,37 +32,102 @@ public class Stu_memberDao {
 		return connection;
 	}// getConnection
 
-	public Stu_memberDto Dao_MViewOne(String id2) {
-		smdto=null;
+	//1.로그인 체크&접속 메소드
+	public Stu_memberDto Dao_Login(String id2, String pw2) {
 		try {
-			conn=getConnection();
-			query="select * stu_mem where id=?";
+			conn = getConnection();
+			query="select * from stu_mem where id=? and pw=?";
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, id2);
+			pstmt.setString(2, pw2);
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				id = rs.getString("id");
-				System.out.println("IF id : " + id);
+				System.out.println("Dao_Login id : " + id);
 				pw = rs.getString("pw");
 				name = rs.getString("name");
 				gender = rs.getString("gender");
-				p_num = rs.getInt("p_num");
+				p_num = rs.getString("p_num");
 				phone = rs.getString("phone");
 				email = rs.getString("email");
 				region = rs.getString("region");
 				sdate = rs.getTimestamp("sdate");
-				smdto = new Stu_memberDto(id, pw, name, gender, p_num, phone, email, region, sdate);
+				smdto=new Stu_memberDto(id, pw, name, gender, p_num, phone, email, region, sdate);
 			}//if
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) rs.close();
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
 			} catch (Exception e2) {e2.printStackTrace();}
-		} //try
+		}//try
 		return smdto;
-	}//Dao_MViewOne();
+	}//Dao_Login()
+	
+	//2.회원정보 1개 열람 메소드
+		public Stu_memberDto Dao_MSelectOne(String id2) {
+			smdto=null;
+			try {
+				conn=getConnection();
+				query="select * from stu_mem where id=?";
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, id2);
+				rs=pstmt.executeQuery();
+				while(rs.next()) {
+					id = rs.getString("id");
+					System.out.println("IF id : " + id);
+					pw = rs.getString("pw");
+					name = rs.getString("name");
+					gender = rs.getString("gender");
+					p_num = rs.getString("p_num");
+					phone = rs.getString("phone");
+					email = rs.getString("email");
+					region = rs.getString("region");
+					sdate = rs.getTimestamp("sdate");
+					smdto = new Stu_memberDto(id, pw, name, gender, p_num, phone, email, region, sdate);
+				}//if
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null) rs.close();
+					if (pstmt != null) pstmt.close();
+					if (conn != null) conn.close();
+				} catch (Exception e2) {e2.printStackTrace();}
+			} //try
+			return smdto;
+		}//Dao_MSelectOne();
+
+		//3.회원정보 수정 - Update
+		public int Dao_MUpdate(Stu_memberDto smdto2) {
+			try {
+				System.out.println("dao phone : "+smdto2.getPhone());
+				System.out.println("dao email : "+smdto2.getEmail());
+				conn=getConnection();
+				query="update stu_mem set pw=?,phone=?,email=?,gender=?,region=?,sdate=sysdate where id=?";
+				pstmt=conn.prepareStatement(query);
+				pstmt.setString(1, smdto2.getPw());
+				pstmt.setString(2, smdto2.getPhone());
+				pstmt.setString(3, smdto2.getEmail());
+				pstmt.setString(4, smdto2.getGender());
+				pstmt.setString(5, smdto2.getRegion());
+				pstmt.setString(6, smdto2.getId());
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(rs!=null) rs.close();
+					if(pstmt!=null) pstmt.close();
+					if(conn!=null) conn.close();
+				} catch (Exception e2) {e2.printStackTrace();}
+			}//try
+			
+			return result;
+		}
+
+	
 	
 }//Stu_memberDao()

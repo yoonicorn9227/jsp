@@ -8,15 +8,15 @@ public class Stu_memberDto {
 	private String pw;
 	private String name;
 	private String gender;
-	private int p_num;
+	private String p_num;
 	private String phone;
 	private String email;
 	private String region;
 	private Timestamp sdate;
 
 	public Stu_memberDto() {}// 기본생성자
-
-	public Stu_memberDto(String id, String pw, String name, String gender, int p_num, String phone, String email,
+	
+	public Stu_memberDto(String id, String pw, String name, String gender, String p_num, String phone, String email,
 			String region) {
 		this.id = id;
 		this.pw = pw;
@@ -28,7 +28,7 @@ public class Stu_memberDto {
 		this.region = region;
 	}//8개 생성자
 
-	public Stu_memberDto(String id, String pw, String name, String gender, int p_num, String phone, String email,
+	public Stu_memberDto(String id, String pw, String name, String gender, String p_num, String phone, String email,
 			String region, Timestamp sdate) {
 		this.id = id;
 		this.pw = pw;
@@ -40,6 +40,7 @@ public class Stu_memberDto {
 		this.region = region;
 		this.sdate = sdate;
 	}//전체생성자
+
 
 	//♣Getter&Setter
 	public String getId() {
@@ -74,11 +75,11 @@ public class Stu_memberDto {
 		this.gender = gender;
 	}
 
-	public int getP_num() {
+	public String getP_num() {
 		return p_num;
 	}
 
-	public void setP_num(int p_num) {
+	public void setP_num(String p_num) {
 		this.p_num = p_num;
 	}
 

@@ -5,42 +5,16 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.cdnfonts.com/css/nasa" rel="stylesheet">
 	<c:if test="${session_id==null}">
 		<script>
 			alert("로그인을 해야만 접속이 가능합니다.");
 			location.href="a_login.do";
 		</script>
 	</c:if>
-	<c:if test="${session_id=='aaa'}">
-		<script>
-			alert("로그인을 해야만 접속이 가능합니다.");
-			location.href="a_login.do";
-		</script>
-	</c:if>
 	<title>main</title>
-	<style>
-		body{margin: 0; overflow: hidden;}
-		table{width: 100vw; height: 100vh; margin: 0}
-		.bg-video {position: absolute; top: 0; left: 0; height: 100%; width: 100%;}
-		.bg-video_content {height: 100%; width: 100%; object-fit: cover;}
-		
-		.bg-text {position: absolute; top: 50%; width: 100%; height: 100%;}
-		.bg-text h1 {margin: -800px; text-align: center; font-size: 200px; font-weight: 700; color: #ffffff;}
-		.bg-text h3 {margin: 1400px auto; text-align: center; font-size: 20px; font-weight: 700; color: #ffffff;}
-		ul{display: flex; justify-content: center; margin:-50px;}
-		ul>li {float: left; list-style: none;}
-		img{margin:auto;}
-		.f_search {margin-top: 56px; width: 1180px; height: 180px; margin-left: auto; margin-right: auto; text-align: center; position: relative; bottom:190px;}
-		.sch_wrap {width: 664px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-		.sch_wrap form {position: relative; width: 644px; height: 68px;}
-		.txt {box-sizing: border-box; width: 100%; height: 68px; border: 2px solid #202020; padding: 0 20px; font-size: 20px; font-weight: 700;}
-		.btn_srch {display: inline-block; width: 32px; height: 32px; background: url('images/ico_set2.png') -600px -150px no-repeat; background-size: 800px 800px;
-    	border: 0; position: absolute; right: 280px; top: 57%; transform: translateY(-50%); cursor: pointer;}
-    	#center {text-align: center;}
-		#menu{position: relative; bottom:150px; display: inline-block;}
-		#menu img{border-radius: 10px;}
-		#menu_my {margin-right: 30px; }
-	</style>
+	<link rel="stylesheet" href="css/a_main.css">
 	</head>
 	<body>
 		<table>
@@ -55,6 +29,7 @@
 				<form action="https://www.google.co.kr/search" method="get" target="_blank">
 					<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="query" required>
 					<button class="btn_srch" type="submit"></button>
+					<a href="a_logout.do"><span><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</span></a>
 				</form>
 				</div>
 			</div>
@@ -62,7 +37,7 @@
 			<div id="center">
 				<ul id="menu">
 					<li id="menu_my">
-					<a href="a_myPage.jsp"><img src="images/my.png"></a>
+					<a href="a_myPage.do"><img src="images/my.png"></a>
 					</li>
 					<li id="menu_my">
 					<a href="#"><img src="images/list.png"></a>

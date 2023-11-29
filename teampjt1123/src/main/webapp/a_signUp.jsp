@@ -72,8 +72,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" id="selBtn">
-					<button type="submit" class="subBtn">가입하기</button>
-					<button type="submit" class="resBtn">취소하기</button>
+					<button type="submit" id="subBtn">가입하기</button>
+					<button type="submit" id="resBtn">취소하기</button>
 				</td>
 			</tr>
 	</form>

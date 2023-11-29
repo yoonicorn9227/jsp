@@ -16,6 +16,7 @@
 				});//#회원가입
 				
 				$("#loginBtn").click(function(){
+					
 					if($("#id").val().length<3){
 					alert("아이디를 다시 입력하세요.")
 					$("#id").focus();
@@ -27,6 +28,7 @@
 					$("#pw").focus();
 					return false
 					}//if-비밀번호 유효성
+					loginFrm.submit();
 				});//로그인버튼
 			});//제이쿼리 구문
 		</script>
@@ -35,14 +37,14 @@
         <div class="login_wap">
             <h1><span id="JJA">JJA</span><span id="GEUL">GEUL</span></h1>
             <h2>로 그 인</h2>
-            <form action="서버의url" method="post" id="log_f">
+            <form name="loginFrm" method="post" id="log_f" action="doLogin.do">
                 <input type="text" name="id" placeholder="id" id="id">
                 <input type="password" name="pw" placeholder="Password" id="pw">
                 <label for="remember-check" id="labelpw">
                     <input type="checkbox" id="remember-check">아이디 저장하기
                 </label>
                 <input type="button" value="Login" id="loginBtn">
-                <input type="button" value="Sign Up"; id="signUpBtn">
+                <input type="button" value="Sign Up" id="signUpBtn">
             </form>
         </div>
     <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">

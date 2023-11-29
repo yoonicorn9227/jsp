@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.java.www.service.Ser_MView;
+import com.java.www.service.Ser_Login;
+import com.java.www.service.Ser_MSelectOne;
+import com.java.www.service.Ser_MUpdate;
+import com.java.www.service.Ser_doMUpdate;
 import com.java.www.service.Service;
 
 @WebServlet("*.do")
@@ -36,15 +39,31 @@ public class T2_FController extends HttpServlet {
 		case "/a_login.do":
 			response.sendRedirect("a_login.jsp");
 			break;
+		case "/a_logout.do":
+			response.sendRedirect("a_logout.jsp");
+			break;
+		case "/doLogin.do": 
+			service = new Ser_Login();
+			service.execute(request, response);
+			url="doLogin.jsp";
+			break;
 		case "/a_main.do":
-			HttpSession session = request.getSession();
-			session.setAttribute("session_id", "aaa");
-			response.sendRedirect("a_main.jsp");
+			url="a_main.jsp";
 			break;
 		case "/a_myPage.do": //회원정보 보기
-			service = new Ser_MView();
+			service = new Ser_MSelectOne();
 			service.execute(request, response);
 			url="a_myPage.jsp";
+			break;
+		case "/a_MUpdate.do": //회원정보 수정페이지
+			service = new Ser_MUpdate();
+			service.execute(request, response);
+			url="a_MUpdate.jsp";
+			break;
+		case "/do_MUpdate.do": //회원정보 보기
+			service = new Ser_doMUpdate();
+			service.execute(request, response);
+			url="do_MUpdate.jsp";
 			break;
 		}// switch
 
