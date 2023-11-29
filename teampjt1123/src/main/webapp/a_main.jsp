@@ -73,7 +73,7 @@
 						</li>
 					</ul>
 				</div>
-				<h1>JJAGEUL</h1>
+				<h1 id="h1"><strong style=" color:#0038a8";>JJA</strong>GEUL</h1>
 				<h3>
 					한국 직업전문학교 copyright © ★항공 JAVA 풀스택 개발자 양성과정 5기★ - 2팀( 최창윤 | 조민진 | 정보람 | 김승우 )
 				</h3>
