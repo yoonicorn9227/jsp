@@ -33,7 +33,7 @@
 <body>
 	<form name="MUpdateFrm" method="post" action="a_MUpdate.do">
 	    <table>
-			<h1 id="idtitle">회원정보</h1>
+			<h1 id="idtitle">[${session_name}] 회원님 정보</h1>
 			<tr>
 			<th>아 이 디</th>
 				<td>${smdto.id}</td>

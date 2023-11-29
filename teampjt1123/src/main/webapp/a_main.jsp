@@ -15,6 +15,15 @@
 	</c:if>
 	<title>main</title>
 	<link rel="stylesheet" href="css/a_main.css">
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	$(function(){
+		$("#my_png").click(function(){
+			alert("회원정보 보기 페이지로 이동합니다.");
+		});//#my_png
+		
+	});//제이쿼리 구문 최신
+	</script>
 	</head>
 	<body>
 		<table>
@@ -37,9 +46,9 @@
 			<div id="center">
 				<ul id="menu">
 					<li id="menu_my">
-					<a href="a_myPage.do"><img src="images/my.png"></a>
+					<a href="a_myPage.do"><img src="images/my.png" id="my_png"></a>
 					</li>
-					<li id="menu_my">
+					<li id="menu_list">
 					<a href="#"><img src="images/list.png"></a>
 					</li>
 				</ul>
