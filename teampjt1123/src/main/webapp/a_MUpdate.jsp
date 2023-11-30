@@ -33,21 +33,7 @@
 	    		alert("회원정보를 수정하였습니다.");
     			MUpdateFrm.submit();
     		});//#MUpdateBtn
-    		
-    		$("#pw2").keyup(function(){
-	    		if($("#pw1").val!=$("#pw2").val()){
-	    			$('#pwCheck').text("비밀번호 불일치");
-	    			$('#pwCheck').addClass("txtOff");
-	    			$('#pwCheck').removeClass("txtOn");
-	    		} else {
-	    			$('#pwCheck').text("비밀번호 일치");
-	    			$('#pwCheck').addClass("txtOn");
-	    			$('#pwCheck').removeClass("txtOff");
-	    		}//
-    			
-    		})
-    		
-    		
+    	
     		
     		$("#resBtn").click(function(){
     			alert("회원정보 페이지로 이동합니다.")

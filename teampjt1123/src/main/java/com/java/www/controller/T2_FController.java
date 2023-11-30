@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.java.www.service.Ser_Blist;
 import com.java.www.service.Ser_Login;
 import com.java.www.service.Ser_MSelectOne;
 import com.java.www.service.Ser_MUpdate;
@@ -42,11 +43,6 @@ public class T2_FController extends HttpServlet {
 		case "/a_logout.do":
 			response.sendRedirect("a_logout.jsp");
 			break;
-		case "/doLogin.do": 
-			service = new Ser_Login();
-			service.execute(request, response);
-			url="doLogin.jsp";
-			break;
 		case "/a_main.do":
 			url="a_main.jsp";
 			break;
@@ -59,6 +55,16 @@ public class T2_FController extends HttpServlet {
 			service = new Ser_MUpdate();
 			service.execute(request, response);
 			url="a_MUpdate.jsp";
+			break;
+		case "/b_list.do": //회원정보 수정페이지
+			service = new Ser_Blist();
+			service.execute(request, response);
+			url="b_list.jsp";
+			break;
+		case "/doLogin.do": 
+			service = new Ser_Login();
+			service.execute(request, response);
+			url="doLogin.jsp";
 			break;
 		case "/do_MUpdate.do": //회원정보 보기
 			service = new Ser_doMUpdate();

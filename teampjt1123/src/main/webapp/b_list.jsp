@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,7 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>요청게시판-b_list</title>
     <link rel="stylesheet" href="css/css.css">
-     <link href="https://fonts.cdnfonts.com/css/nasa" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/nasa" rel="stylesheet">
+    <c:if test="${session_id==null}">
+		<script>
+			alert("로그인을 해야만 접속이 가능합니다.");
+			location.href="a_login.do";
+		</script>
+	</c:if>
     <style>
 		footer {margin-top: 20px;padding: 65px 0;border-top: 1px solid #ddd;
 		text-align: center; display: flex;  height: 100%;
@@ -28,13 +36,13 @@
    	 <h1 class="logo"><a href="">JJAGEUL</a></h1>
     	<nav>
 	    	<ul>
-		        <li><a href="">땡땡땡님</a></li>
+		        <li><a href="">${session_name}님</a></li>
 		        <li class="border">|</li>
-		        <li><a href="">회원정보</a></li>
+		        <li><a href="a_myPage.do">회원정보</a></li>
 		        <li class="border">|</li>
-		        <li><a href="">로그아웃</a></li>
+		        <li><a href="a_logout.do">로그아웃</a></li>
 		        <li class="border">|</li>
-		        <li><a href="">요청게시판</a></li>
+		        <li><a href="a_main.do">메인 페이지</a></li>
 	    	</ul>
 		</nav>
 	</header>
@@ -52,60 +60,35 @@
                     <div class="date">작성일</div>
                     <div class="count">조회</div>
                 </div>
-                <div>
-                    <div class="num">5</div>
-                    <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                    <div class="writer">김이름</div>
-                    <div class="date">2021.1.15</div>
-                    <div class="count">33</div>
-                </div>
-                <div>
-                    <div class="num">4</div>
-                    <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                    <div class="writer">김이름</div>
-                    <div class="date">2021.1.15</div>
-                    <div class="count">33</div>
-                </div>
-                <div>
-                    <div class="num">3</div>
-                    <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                    <div class="writer">김이름</div>
-                    <div class="date">2021.1.15</div>
-                    <div class="count">33</div>
-                </div>
-                <div>
-                    <div class="num">2</div>
-                    <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                    <div class="writer">김이름</div>
-                    <div class="date">2021.1.15</div>
-                    <div class="count">33</div>
-                </div>
-                <div>
-                    <div class="num">1</div>
-                    <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                    <div class="writer">김이름</div>
-                    <div class="date">2021.1.15</div>
-                    <div class="count">33</div>
-                </div>
+                <c:forEach items="${list}" var="sbdto" >
+	                <div>
+	                    <div class="num">${sbdto.bsno}</div>
+	                    <div class="title"><a href="#">${sbdto.btitle}</a></div>
+	                    <div class="writer">${sbdto.id}</div>
+	                    <div class="date"><fmt:formatDate value="${sbdto.bdate}" pattern="yyyy.MM.dd"/></div>
+	                    <div class="count">${sbdto.bhit}</div>
+	                </div>
+                </c:forEach>
             </div>
             <div class="board_page">
                 <a href="#" class="bt first"><<</a>
                 <a href="#" class="bt prev"><</a>
-                <a href="#" class="num">1</a>
-                <a href="#" class="num">2</a>
-                <a href="#" class="num">3</a>
-                <a href="#" class="num">4</a>
-                <a href="#" class="num">5</a>
-                <a href="#" class="num">6</a>
-                <a href="#" class="num">7</a>
-                <a href="#" class="num">8</a>
-                <a href="#" class="num">9</a>
-                <a href="#" class="num">10</a>
+                <a href="b_list.do?page=1" class="num">1</a>
+                <a href="b_list.do?page=2" class="num">2</a>
+                <a href="b_list.do?page=3" class="num">3</a>
+                <a href="b_list.do?page=4" class="num">4</a>
+                <a href="b_list.do?page=5" class="num">5</a>
+                <a href="b_list.do?page=6" class="num">6</a>
+                <a href="b_list.do?page=7" class="num">7</a>
+                <a href="b_list.do?page=8" class="num">8</a>
+                <a href="b_list.do?page=9" class="num">9</a>
+                <a href="b_list.do?page=10" class="num">10</a>
                 <a href="#" class="bt next">></a>
                 <a href="#" class="bt last">>></a>
             </div>
             <div class="bt_wrap">
                 <a href="write.html" class="on">등록</a>
+                <a href="a_main.do" class="on">메인</a>
                 <!--<a href="#">수정</a>-->
             </div>
         </div>

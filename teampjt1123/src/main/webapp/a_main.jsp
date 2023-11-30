@@ -49,7 +49,7 @@
 					<a href="a_myPage.do"><img src="images/my.png" id="my_png"></a>
 					</li>
 					<li id="menu_list">
-					<a href="#"><img src="images/list.png"></a>
+					<a href="b_list.do"><img src="images/list.png"></a>
 					</li>
 				</ul>
 			</div>

@@ -29,7 +29,7 @@ public class Stu_boardDto {
 		this.bindent = bindent;
 		this.bhit = bhit;
 		this.bfile = bfile;
-	}// 전체생성자
+	}// 전체생성자(10개)
 
 	
 	//♣Getter&Setter
