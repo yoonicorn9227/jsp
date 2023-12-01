@@ -7,12 +7,6 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.cdnfonts.com/css/nasa" rel="stylesheet">
-	<c:if test="${session_id==null}">
-		<script>
-			alert("로그인을 해야만 접속이 가능합니다.");
-			location.href="a_login.do";
-		</script>
-	</c:if>
 	<title>main</title>
 	<link rel="stylesheet" href="css/a_main.css">
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -28,6 +22,10 @@
 		
 	});//제이쿼리 구문 최신
 	</script>
+	<style>
+	   .loc{position: relative; top:-50px; width:96px; text-align: center; }
+	   a{text-decoration: none; color: #fff;}
+	</style>
 	</head>
 	<body>
 		<table>
@@ -50,39 +48,64 @@
 			<div id="center">
 				<ul id="menu">
 					<li id="menu_my">
-					<a href="a_myPage.do"><img src="images/my.png" id="my_png"></a>
+					<a href="a_myPage.do"><img src="images/my_1.png" id="my_png"></a>
 					</li>
 					<li id="menu_list">
-					<a href="b_list.do"><img src="images/list.png" id="list_png"></a>
+					<a href="b_list.do"><img src="images/list_1.png" id="list_png"></a>
 					</li>
 				</ul>
 			</div>
 				<!-- 이미지링크 -->
 				<div>
 					<ul>
+					    <c:forEach var="num" begin="0" end="7">
 						<li>
-						<a href="https://github.com/" target="_blank" class="mpg"><img src="images/githube.png"></a>
+						<a href="https://github.com/" target="_blank" class="mpg">
+						  <c:if test="${num/4<1}">
+							  <img src="images/link1.png">
+							  <div class="loc">gitHub</div>
+						  </c:if>
+						  <c:if test="${num/4>=1}">
+							  <img src="images/link2.png">
+							  <div class="loc">xml</div>
+						  </c:if>
+						</a>
+						</li>
+					    </c:forEach>
+						<li>
+					</ul>
+					<ul id="ul2">
+						<li>
+						<c:if test="pno==null">
+							<a href="#" target="_blank" class="mpg"><img src="images/plus.png"></a>
+						</c:if>
+						<c:if test="">
+							<a href="임의로 입력한 url" target="_blank" class="mpg"><img src="images/plus.png"></a>
+						</c:if>
 						</li>
 						<li>
-						<a href="https://www.mockaroo.com/" target="_blank" class="mpg"><img src="images/mockaroo.png"></a>
+						<a href="https://www.mockaroo.com/" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 						<li>
-						<a href="https://www.data.go.kr/index.do" target="_blank" class="mpg"><img src="images/data.png"></a>
+						<a href="https://www.data.go.kr/index.do" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 						<li>
-						<a href="http://json.parser.online.fr/" target="_blank" class="mpg"><img src="images/json.png"></a>
+						<a href="http://json.parser.online.fr/" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 						<li>
-						<a href="https://cafe.naver.com/koreaitbigdata" target="_blank" class="mpg"><img src="images/java.png"></a>
+						<a href="https://cafe.naver.com/koreaitbigdata" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 						<li>
-						<a href="https://fonts.google.com/?subset=korean&noto.script=Kore" target="_blank" class="mpg"><img src="images/webfonts.png"></a>
+						<a href="https://fonts.google.com/?subset=korean&noto.script=Kore" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 						<li>
-						<a href="https://elmah.io/tools/xml-formatter/" target="_blank" class="mpg"><img src="images/xml.png"></a>
+						<a href="https://elmah.io/tools/xml-formatter/" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 						<li>
-						<a href="https://us06web.zoom.us/j/5201428216?pwd=bk9hT0ppVithT2JKblJNQTIzbktNUT09" target="_blank" class="mpg"><img src="images/zoom.png"></a>
+						<a href="https://us06web.zoom.us/j/5201428216?pwd=bk9hT0ppVithT2JKblJNQTIzbktNUT09" target="_blank" class="mpg"><img src="images/plus.png"></a>
+						</li>
+						<li>
+						<a href="https://us06web.zoom.us/j/5201428216?pwd=bk9hT0ppVithT2JKblJNQTIzbktNUT09" target="_blank" class="mpg"><img src="images/plus.png"></a>
 						</li>
 					</ul>
 				</div>
